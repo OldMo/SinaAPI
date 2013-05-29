@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http
+END
+HTMLEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http/HTMLEntity.java
+END
+ImageItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http/ImageItem.java
+END
+AccessToken.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http/AccessToken.java
+END
+BASE64Encoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http/BASE64Encoder.java
+END
+HttpClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http/HttpClient.java
+END
+Response.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weibo4j/http/Response.java
+END

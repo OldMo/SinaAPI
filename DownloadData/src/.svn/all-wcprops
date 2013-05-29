@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/58/trunk/DownloadRetweet/src
+END
+config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/config.properties
+END
+weiboconfig.properties
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/weiboconfig.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/26/trunk/DownloadRetweet/src/log4j.properties
+END

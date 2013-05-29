@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/84/trunk/FollowRelationPR/src/cn/edu/ccnu/weightpr
+END
+InitialFollowMatrix.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/47/trunk/FollowRelationPR/src/cn/edu/ccnu/weightpr/InitialFollowMatrix.java
+END
+Node.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/47/trunk/FollowRelationPR/src/cn/edu/ccnu/weightpr/Node.java
+END
+PageRank.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/118/trunk/FollowRelationPR/src/cn/edu/ccnu/weightpr/PageRank.java
+END
+TestMemory.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/118/trunk/FollowRelationPR/src/cn/edu/ccnu/weightpr/TestMemory.java
+END
+FileUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/52/trunk/FollowRelationPR/src/cn/edu/ccnu/weightpr/FileUtil.java
+END

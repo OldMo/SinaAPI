@@ -1,0 +1,4 @@
+次工程包含两个包
+第一个为cn.edu.ccnu.pr用PageRank方法来实现影响力的评估
+第二个为cn.edu.ccnu.weightpr用WeightPageRank方法来实现
+第三个为cn.edu.ccnu.reduceMatrixPR方法是同二一样的，但是尝试着将矩阵压缩，将为0列全部去掉，即有多少个要评估的人矩阵就只有多少列

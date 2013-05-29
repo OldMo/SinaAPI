@@ -1,0 +1,42 @@
+package cn.edu.ccnu.pr;
+
+import java.lang.reflect.Array;
+
+/**
+ * 动态增加数组
+ * @author Jelen
+ *
+ */
+public class AutoAddArray {
+	
+	public static Object arrayGrow(Object obj, int addLength) {
+		       	Class clasz = obj.getClass();
+		        if(!clasz.isArray()) {
+		          return null;
+		        }
+		        Class componentType = clasz.getComponentType();
+		        int length = Array.getLength(obj);
+		        int newLength = length + addLength;
+		        Object newArray = Array.newInstance(componentType, newLength);
+		  
+		        System.arraycopy(obj, 0, newArray, 0, length);
+		        Array.set(newArray, length+addLength-1, 5);
+		       return newArray;
+		    }
+		    
+		    public static void main(String[] args) {
+		       int[][] a = {{1,2,3},{2,4,2},{6,7, 3}};
+		        a = (int[][]) arrayGrow(a, 1);
+		      for (int i = 0; i < a.length; i++) {
+		            System.out.print("a[" + i + "] = " + a[i] + "  ");
+		       }
+		        System.out.println();
+		        
+//	       String[] b = {"Jade", "TT", "JadeLT"};
+//	            b = (String[]) arrayGrow(b, 3);
+//		       for (int i = 0; i < b.length; i++) {
+//		           System.out.print("b[" + i + "] = " + b[i] + "  ");
+//		       }
+		    }
+
+}

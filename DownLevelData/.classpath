@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_10"/>
+	<classpathentry kind="lib" path="E:/编程练习/DownLevelData/lib/commons-codec.jar"/>
+	<classpathentry kind="lib" path="E:/编程练习/DownLevelData/lib/commons-httpclient-3.1.jar"/>
+	<classpathentry kind="lib" path="E:/编程练习/DownLevelData/lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="E:/编程练习/DownLevelData/lib/jackson-all-1.8.5.jar"/>
+	<classpathentry kind="lib" path="E:/编程练习/DownLevelData/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="E:/编程练习/DownLevelData/lib/servlet-api.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

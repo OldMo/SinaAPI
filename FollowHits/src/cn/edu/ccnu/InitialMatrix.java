@@ -1,0 +1,240 @@
+package cn.edu.ccnu;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class InitialMatrix {
+	static int[][] matrix;		//二维数组，构造关系矩阵	
+	static int dimenssion = 0;       //矩阵的维数，由语料中的id数来决定
+	static Pattern pattern = Pattern.compile("[0-9]");
+	static ArrayList<Node> followee = new ArrayList<Node>();    //单纯放被关注人id
+	static ArrayList<Node> follower = new ArrayList<Node>();    //单纯放粉丝的id
+	static List<Node> allNodes = new ArrayList<Node>();         //所有的人的点，将id标上一个号，相当于在矩阵中的维度
+	
+	
+	/**
+	 * 读文件
+	 * @param fromPath  读取文件的路径
+	 * @return
+	 * @throws IOException
+	 */
+	public BufferedReader readFile(String fromPath) throws IOException
+	{
+		FileReader reader = new FileReader(fromPath);
+		BufferedReader bufferedReader = new BufferedReader(reader);   //读文件
+		return bufferedReader;
+	}
+	
+		
+	/**
+	 * 写文件
+	 * @param toPath 写入路径
+	 * @return
+	 * @throws IOException
+	 */
+	public BufferedWriter writeFile(String toPath) throws IOException
+	{
+		FileWriter writer = new FileWriter(toPath);
+		BufferedWriter bufferedWriter = new BufferedWriter(writer);   //写文件
+		return bufferedWriter;
+	}
+		
+	//提取数字
+	public static String pickUp(String text) 
+	{
+		Matcher matcher = pattern.matcher(text);
+		StringBuffer bf = new StringBuffer(64);
+		while (matcher.find()) 
+		{
+		  bf.append(matcher.group()).append("");
+		}
+		//System.out.println(bf.toString());
+		 return bf.toString();
+	} 
+	
+	/**
+	 * 根据获取到的文件格式和获取到的id和NO的对应关系初始化矩阵
+	 * @return 
+	 * @throws IOException 
+	 * 
+	 */
+	public void initialMatrix(String fromGraph) throws IOException
+	{
+		matrix = new int[dimenssion][dimenssion];               //关系矩阵
+		for(int i = 0; i < dimenssion;i++)
+			{
+				for(int j = 0; j < dimenssion; j++)
+				{
+					
+					matrix[i][j] = 0;
+				}
+			}
+		
+		BufferedReader br = readFile(fromGraph);
+		
+		while(br.ready())  //读一行则需要处理一列的数据，对id所在列的人是否关注
+		 {
+			 String[] words = new String[20];
+			 String[] fromNodes = new String[dimenssion];  //起始点
+			 String[] toNodes = new String[dimenssion];    //指向的点
+			 words = br.readLine().split("-");
+			 toNodes[0] = words[0];                        //被关注的人
+			 fromNodes = words[1].split(",");              //粉丝列表
+			 int row = 0;
+			 int column = 0;
+			 int k = 1;
+			 for(int j = 0; j < allNodes.size(); j++)      //找到被关注者id所在的矩阵维数的维数，即矩阵所在列
+			 {
+				 if(toNodes[0].equals(allNodes.get(j).id))
+				 {
+					 column = allNodes.get(j).NO;
+					 //System.out.println(toNodes[0]+"---"+column);
+					 break;
+				 }
+			 }
+			 
+			 for(int i = 0;i < fromNodes.length;i++)       //循环直到所有的粉丝都遍历一遍
+			 {
+				
+				 //System.out.print(toNodes[0]+"---"+fromNodes[i]);
+				 
+				 for(int j = 0; j < allNodes.size(); j++)
+				 {
+					 if(fromNodes[i].equals(allNodes.get(j).id))
+					 {
+						 row = allNodes.get(j).NO;
+						 break;
+					 }
+				 }
+				 
+				 matrix[row][column] = 1;                //将有边的两点赋值为1
+				 //System.out.print("("+row+","+column+")");
+			 }
+			 //System.out.println();
+		 }
+	}
+	
+	/**
+	 * 获取语料中的所有id，包括粉丝和被关注者
+	 * @param filePath 语料文件的路径
+	 * @throws IOException 
+	 */
+	public void getAllIds(String fromPath) throws IOException
+	{
+		int lineNo = 1;
+		BufferedReader br = readFile(fromPath);
+		List<String> allIds = new ArrayList<String>();	
+		
+		while(br.ready())
+		{
+			String line = br.readLine();
+			String id = pickUp(line);         //获得过滤后的id
+			
+			if(!id.equals(""))
+			{
+				if(lineNo%4 == 2)             //从语料分析，2,6,10...行为被关注者id
+				{
+					Node node = new Node();
+					node.id = id;
+					followee.add(node);
+				}
+					
+				if(lineNo%4 == 3)            //从语料分析，2,6,10...行为被关注者id
+				{
+					Node node = new Node();
+					node.id = id;
+					follower.add(node);
+				}
+								
+				if(!allIds.contains(id)) //过滤后id不为空并且不是重复的则添加到List中
+				{
+					allIds.add(id);
+					Node node = new Node();
+					node.id = id;
+					node.NO = dimenssion;
+					node.weight = 0.0;
+					allNodes.add(node);  //将各个id号标上编号放入allNodes中
+					dimenssion++;
+				}
+			}
+			lineNo++;
+		}
+		
+		//dimenssion = dimenssion - 1;
+//		for(int i = 0; i < followee.size(); i++)
+//			System.out.println(followee.get(i).NO+"-"+followee.get(i).id+"-"+follower.get(i).NO+"-"+follower.get(i).id);
+		
+//		for(int i = 0; i < allNodes.size(); i++)
+//			System.out.println(allNodes.get(i).NO+"---"+allNodes.get(i).id+"---"+allNodes.get(i).weight);
+	}
+
+	/**
+	 * 将所有的关注信息构建成 “id-follwer1,follower2,follower3....”这个模式，
+	 * 并保存到.txt文件中
+	 * @param toPath  保存文件的路径
+	 * @throws IOException
+	 */
+	public void initialGraph(String toPath) throws IOException
+	{
+		BufferedWriter bw = writeFile(toPath);
+		String line = followee.get(0).id+"-"+follower.get(0).id;    //初始化一个句子的模式“id-follower”
+		for(int i = 1; i < followee.size(); i++)
+		{	
+			if(followee.get(i).id.equals(followee.get(i-1).id))
+				line = line + "," + follower.get(i).id;           //如果是同一个关注者，则在其后添加",follower"
+			else
+			{
+				bw.write(line+"\r");
+				//System.out.println(line);
+				line = followee.get(i).id + "-" + follower.get(i).id; //如果不是同一个关注者，则重新初始化句子模式为“id-follower”
+				continue;
+			}
+				
+		}
+		bw.write(line);
+		//System.out.println(line);
+		bw.close();
+	}
+	
+	public static void main(String[] args) throws IOException
+	{
+		String fromPath = "DATA/focusrelationship.xml";
+		String toPath = "DATA/focusrelationship.txt";
+		String fromGraph = "DATA/focusrelationship.txt";
+		
+		InitialMatrix im = new InitialMatrix();
+		
+		im.getAllIds(fromPath);
+		im.initialGraph(toPath);
+		im.initialMatrix(fromGraph);
+//		BufferedWriter bw = im.writeFile("DATA/matrix.txt");
+//		for(int i = 0; i < dimenssion;i++)
+//		{
+//			for(int j = 0; j < dimenssion; j++)
+//			{
+//				System.out.print(matrix[i][j]);
+//				//bw.write(Integer.toString(matrix[i][j])+"\r");
+//			}
+//				
+//		//	bw.write("\r");
+//			System.out.println();
+//		}
+		//bw.close();
+		//System.out.println(dimenssion);
+//		int i = 0;
+//		for(Node node:allNodes)
+//		{
+//			System.out.println(node.getId()+":"+node.getNO());
+//		}
+	}
+}

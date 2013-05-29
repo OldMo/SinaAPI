@@ -1,0 +1,17 @@
+package cn.edu.ccnu.pr;
+
+import java.io.IOException;
+
+/**
+ * 
+ * @author Jelen
+ *
+ */
+public class MergeFiles {
+	
+	public static void main(String[] args) throws IOException
+	{
+		new FileUtil().mergeFiles("DATA/1/", "retweetuserid", "retweetuserid", 8, ".txt");
+	}
+
+}

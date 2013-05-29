@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib
+END
+jackson-all-1.8.5.jar
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib/jackson-all-1.8.5.jar
+END
+commons-codec.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib/commons-codec.jar
+END
+commons-httpclient-3.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib/commons-httpclient-3.1.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib/servlet-api.jar
+END
+commons-logging-1.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib/commons-logging-1.1.jar
+END
+log4j-1.2.16.jar
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/26/trunk/DownloadRetweet/lib/log4j-1.2.16.jar
+END
